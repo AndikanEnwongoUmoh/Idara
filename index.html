@@ -18,6 +18,11 @@
     />
 
     <style>
+        html, body {
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+    } 
       /* =============================================
        DESIGN TOKENS — CSS CUSTOM PROPERTIES
         to update brand colors globally
@@ -108,6 +113,7 @@
         /* Nav height for scroll offset */
         --nav-h: 72px;
       }
+    
 
       /* =============================================
        CSS LAYERS for clean specificity
@@ -1122,7 +1128,7 @@
         .portfolio-grid {
           display: grid;
           grid-template-columns: repeat(
-            3,
+            auto-fit,
             minmax(min(100%, 260px), 1fr)
           );
           justify-items: center;
@@ -1162,9 +1168,7 @@
           mask-composite: exclude;
           animation: shimmerSlide 6s linear infinite;
         }
-        .portfolio-card:last-child {
-          grid-column:  2;
-        }
+       
         .portfolio-card:hover {
           transform: scale(1.04);
           box-shadow: var(--shadow-deep);
@@ -3170,9 +3174,9 @@
               <div class="contact-detail">
                 <span class="contact-detail-icon" aria-hidden="true">✉️</span>
                 <a
-                  href="mailto:emysharon158@gmail.com"
+                  href="mailto:graphicstudyguides@gmail.com"
                   class="contact-email-link"
-                  >emysharon158@gmail.com</a
+                  >graphicstudyguides@gmail.com</a
                 >
               </div>
               <div class="contact-detail">
