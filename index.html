@@ -1,0 +1,3518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Idara's E-Business Hub | Educational Design & Branding by Emy</title>
+    <meta
+      name="description"
+      content="Idara's E-Business Hub — Emy, an Educational Design and Branding Specialist creating beautiful study guides, workbooks, ebooks, and branding resources."
+    />
+
+    <!--  Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* =============================================
+       DESIGN TOKENS — CSS CUSTOM PROPERTIES
+        to update brand colors globally
+    ============================================= */
+      :root {
+        /* Color Palette */
+        --c-primary: #3a2f4a; /* Midnight Opal */
+        --c-bg: #faf6f1; /* Opal White */
+        --c-gold: #d4af72; /* Glimmering Gold */
+        --c-blush: #f2d4e0; /* Pearl Blush */
+        --c-blue: #d6e8f0; /* Opal Blue */
+        --c-mist: #e8eff5; /* Celestial Mist */
+        --c-gold-dark: #b8923a;
+        --c-gold-light: #f0d49a;
+        --c-primary-light: #5a4870;
+        --c-text: #2a1f3a;
+        --c-text-muted: #6b5f7a;
+        --c-white: #ffffff;
+
+        /* Typography */
+        --font-serif: "Cormorant Garamond", Georgia, serif;
+        --font-sans: "DM Sans", system-ui, sans-serif;
+
+        /* Spacing — fluid with clamp() */
+        --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+        --space-sm: clamp(0.75rem, 1.5vw, 1rem);
+        --space-md: clamp(1rem, 2vw, 1.5rem);
+        --space-lg: clamp(1.5rem, 3vw, 2.5rem);
+        --space-xl: clamp(2rem, 5vw, 4rem);
+        --space-2xl: clamp(3rem, 7vw, 6rem);
+        --space-3xl: clamp(4rem, 10vw, 9rem);
+
+        /* Border radius */
+        --radius-sm: 8px;
+        --radius-md: 16px;
+        --radius-lg: 24px;
+        --radius-xl: 40px;
+
+        /* Shadows */
+        --shadow-soft: 0 4px 24px rgba(58, 47, 74, 0.08);
+        --shadow-glow: 0 8px 40px rgba(212, 175, 114, 0.18);
+        --shadow-deep: 0 16px 64px rgba(58, 47, 74, 0.16);
+        --shadow-gold: 0 0 32px rgba(212, 175, 114, 0.3);
+
+        /* Shimmer gradients */
+        --shimmer-hero:
+          radial-gradient(
+            ellipse 80% 60% at 20% 30%,
+            rgba(242, 212, 224, 0.55) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 70% at 80% 20%,
+            rgba(214, 232, 240, 0.45) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 50% 50% at 50% 80%,
+            rgba(212, 175, 114, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            ellipse 90% 80% at 60% 50%,
+            rgba(232, 239, 245, 0.4) 0%,
+            transparent 70%
+          ),
+          var(--c-bg);
+        --shimmer-opal: linear-gradient(
+          135deg,
+          rgba(242, 212, 224, 0.6) 0%,
+          rgba(214, 232, 240, 0.6) 33%,
+          rgba(212, 175, 114, 0.3) 66%,
+          rgba(242, 212, 224, 0.4) 100%
+        );
+        --shimmer-border: linear-gradient(
+          135deg,
+          var(--c-blush),
+          var(--c-blue),
+          var(--c-gold-light),
+          var(--c-blush)
+        );
+
+        /* Transitions */
+        --ease-luxury: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+        --transition: all 0.4s var(--ease-luxury);
+
+        /* Nav height for scroll offset */
+        --nav-h: 72px;
+      }
+
+      /* =============================================
+       CSS LAYERS for clean specificity
+    ============================================= */
+      @layer base, layout, components, utilities, animations;
+
+      /* =============================================
+       BASE LAYER
+    ============================================= */
+      @layer base {
+        *,
+        *::before,
+        *::after {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
+
+        html {
+          scroll-behavior: smooth;
+          font-size: 16px;
+          -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+          font-family: var(--font-sans);
+          background-color: var(--c-bg);
+          color: var(--c-text);
+          line-height: 1.7;
+          overflow-x: hidden;
+        }
+
+        img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }
+
+        a {
+          color: inherit;
+          text-decoration: none;
+        }
+
+        ul,
+        ol {
+          list-style: none;
+        }
+
+        button {
+          cursor: pointer;
+          border: none;
+          background: none;
+          font: inherit;
+        }
+
+        input,
+        textarea,
+        select {
+          font: inherit;
+          border: none;
+          outline: none;
+        }
+
+        /* Scroll offset for sticky nav */
+        [id] {
+          scroll-margin-top: calc(var(--nav-h) + 1rem);
+        }
+
+        /* Focus visible */
+        :focus-visible {
+          outline: 2px solid var(--c-gold);
+          outline-offset: 3px;
+          border-radius: var(--radius-sm);
+        }
+
+        /* Selection */
+        ::selection {
+          background: var(--c-gold);
+          color: var(--c-primary);
+        }
+      }
+
+      /* =============================================
+       TYPOGRAPHY
+    ============================================= */
+      @layer base {
+        h1 {
+          font-size: clamp(2.8rem, 7vw, 5.5rem);
+          font-family: var(--font-serif);
+          font-weight: 600;
+          line-height: 1.1;
+          letter-spacing: -0.02em;
+          text-wrap: balance;
+        }
+        h2 {
+          font-size: clamp(2rem, 4.5vw, 3.5rem);
+          font-family: var(--font-serif);
+          font-weight: 500;
+          line-height: 1.2;
+          letter-spacing: -0.01em;
+          text-wrap: balance;
+        }
+        h3 {
+          font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+          font-family: var(--font-serif);
+          font-weight: 500;
+          line-height: 1.3;
+        }
+        h4 {
+          font-size: clamp(1rem, 2vw, 1.25rem);
+          font-family: var(--font-sans);
+          font-weight: 600;
+        }
+        p {
+          font-size: clamp(0.95rem, 1.5vw, 1.05rem);
+          line-height: 1.75;
+          color: var(--c-text-muted);
+        }
+
+        .serif-italic {
+          font-family: var(--font-serif);
+          font-style: italic;
+        }
+        .gold-text {
+          color: var(--c-gold);
+        }
+        .label-tag {
+          font-family: var(--font-sans);
+          font-size: 0.75rem;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--c-gold);
+        }
+      }
+
+      /* =============================================
+       LAYOUT LAYER
+    ============================================= */
+      @layer layout {
+        .container {
+          width: 100%;
+          max-width: 1200px;
+          margin-inline: auto;
+          padding-inline: clamp(1rem, 5vw, 3rem);
+        }
+
+        .section-pad {
+          padding-block: var(--space-3xl);
+        }
+
+        .grid-2 {
+          display: grid;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 480px), 1fr)
+          );
+          gap: var(--space-lg);
+        }
+        .grid-3 {
+          display: grid;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 300px), 1fr)
+          );
+          gap: var(--space-md);
+        }
+        .grid-4 {
+          display: grid;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 220px), 1fr)
+          );
+          gap: var(--space-md);
+        }
+        .flex-center {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .flex-between {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+      }
+
+      /* =============================================
+       COMPONENTS
+    ============================================= */
+      @layer components {
+        /* ---- BUTTONS ---- */
+        .btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.85em 2em;
+          border-radius: var(--radius-xl);
+          font-family: var(--font-sans);
+          font-size: 0.9rem;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          transition: var(--transition);
+          position: relative;
+          overflow: hidden;
+          white-space: nowrap;
+        }
+        .btn::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: rgba(255, 255, 255, 0.12);
+          opacity: 0;
+          transition: opacity 0.3s;
+        }
+        .btn:hover::before {
+          opacity: 1;
+        }
+
+        .btn-gold {
+          background: linear-gradient(
+            135deg,
+            var(--c-gold) 0%,
+            var(--c-gold-light) 50%,
+            var(--c-gold) 100%
+          );
+          background-size: 200% 100%;
+          color: var(--c-primary);
+          box-shadow: 0 4px 20px rgba(212, 175, 114, 0.35);
+        }
+        .btn-gold:hover {
+          background-position: 100% 0;
+          box-shadow: var(--shadow-gold);
+          transform: translateY(-2px);
+        }
+
+        .btn-outline {
+          background: transparent;
+          border: 1.5px solid var(--c-gold);
+          color: var(--c-gold);
+        }
+        .btn-outline:hover {
+          background: var(--c-gold);
+          color: var(--c-primary);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-gold);
+        }
+
+        .btn-primary {
+          background: var(--c-primary);
+          color: var(--c-gold);
+          border: 1.5px solid rgba(212, 175, 114, 0.3);
+        }
+        .btn-primary:hover {
+          background: var(--c-primary-light);
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-deep);
+        }
+
+        /* ---- SECTION HEADER ---- */
+        .section-header {
+          text-align: center;
+          margin-bottom: var(--space-xl);
+        }
+        .section-header h2 {
+          color: var(--c-primary);
+          margin-block: 0.4em;
+        }
+        .section-header p {
+          max-width: 54ch;
+          margin-inline: auto;
+        }
+
+        /* ---- IRIDESCENT CARD BORDER ---- */
+        .card-iridescent {
+          position: relative;
+          background: var(--c-white);
+          border-radius: var(--radius-lg);
+          padding: var(--space-lg);
+          transition: var(--transition);
+        }
+        .card-iridescent::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 1.5px;
+          background: var(--shimmer-border);
+          background-size: 200% 200%;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          transition: background-position 0.6s var(--ease-luxury);
+        }
+        .card-iridescent:hover::before {
+          background-position: 100% 100%;
+        }
+        .card-iridescent:hover {
+          transform: translateY(-6px);
+          box-shadow:
+            var(--shadow-deep),
+            0 0 40px rgba(242, 212, 224, 0.25);
+        }
+
+        /* ---- SHIMMER DIVIDER ---- */
+        .shimmer-divider {
+          height: 3px;
+          background: var(--shimmer-border);
+          background-size: 200% 100%;
+          animation: shimmerSlide 3s linear infinite;
+          border-radius: 99px;
+          margin-block: var(--space-xl);
+        }
+
+        /* ---- GOLD CHECK / CROSS ---- */
+        .feat-check {
+          color: var(--c-gold);
+          font-weight: 600;
+        }
+        .feat-cross {
+          color: #ccc;
+          opacity: 0.6;
+        }
+      }
+
+      /* =============================================
+       NAVIGATION
+    ============================================= */
+      @layer components {
+        #navbar {
+          position: fixed;
+          top: 0;
+          inset-inline: 0;
+          z-index: 1000;
+          height: var(--nav-h);
+          backdrop-filter: blur(20px) saturate(180%);
+          -webkit-backdrop-filter: blur(20px) saturate(180%);
+          background: rgba(232, 239, 245, 0.72);
+          border-bottom: 1px solid rgba(212, 175, 114, 0.12);
+          transition:
+            background 0.4s,
+            box-shadow 0.4s;
+        }
+        #navbar.scrolled {
+          background: rgba(232, 239, 245, 0.9);
+          box-shadow: 0 2px 20px rgba(58, 47, 74, 0.1);
+        }
+
+        .nav-inner {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: var(--space-md);
+        }
+
+        .nav-logo {
+          font-family: var(--font-serif);
+          font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+          font-weight: 600;
+          color: var(--c-primary);
+          letter-spacing: -0.01em;
+          flex-shrink: 0;
+        }
+        .nav-logo span {
+          color: var(--c-gold);
+        }
+
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: clamp(1rem, 2vw, 2rem);
+        }
+        .nav-links a {
+          font-size: 0.88rem;
+          font-weight: 500;
+          color: var(--c-primary);
+          letter-spacing: 0.02em;
+          position: relative;
+          padding-bottom: 2px;
+          transition: color 0.3s;
+        }
+        .nav-links a::after {
+          content: "";
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 1.5px;
+          background: var(--c-gold);
+          transition: width 0.35s var(--ease-luxury);
+        }
+        .nav-links a:hover {
+          color: var(--c-gold-dark);
+        }
+        .nav-links a:hover::after {
+          width: 100%;
+        }
+
+        /* Hamburger */
+        .nav-toggle {
+          display: none;
+          flex-direction: column;
+          gap: 5px;
+          width: 26px;
+          cursor: pointer;
+          padding: 4px;
+          background: none;
+          border: none;
+        }
+        .nav-toggle span {
+          display: block;
+          height: 2px;
+          background: var(--c-primary);
+          border-radius: 2px;
+          transition: var(--transition);
+          transform-origin: center;
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+          transform: translateY(7px) rotate(45deg);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+          opacity: 0;
+          transform: scaleX(0);
+        }
+        .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+          transform: translateY(-7px) rotate(-45deg);
+        }
+
+        .nav-mobile {
+          display: none;
+          flex-direction: column;
+          gap: 0;
+          background: rgba(232, 239, 245, 0.97);
+          backdrop-filter: blur(20px);
+          padding-block: var(--space-md);
+          border-bottom: 1px solid rgba(212, 175, 114, 0.12);
+          position: fixed;
+          top: var(--nav-h);
+          inset-inline: 0;
+          z-index: 999;
+          transform: translateY(-10px);
+          opacity: 0;
+          pointer-events: none;
+          transition: var(--transition);
+        }
+        .nav-mobile.open {
+          display: flex;
+          transform: translateY(0);
+          opacity: 1;
+          pointer-events: all;
+        }
+        .nav-mobile a {
+          padding: 0.85rem 2rem;
+          font-size: 1rem;
+          font-weight: 500;
+          color: var(--c-primary);
+          border-bottom: 1px solid rgba(212, 175, 114, 0.08);
+          transition:
+            background 0.2s,
+            color 0.2s;
+        }
+        .nav-mobile a:hover {
+          background: rgba(212, 175, 114, 0.08);
+          color: var(--c-gold-dark);
+        }
+        .nav-mobile .btn {
+          margin: var(--space-sm) 2rem;
+        }
+
+        @media (max-width: 767px) {
+          .nav-links,
+          .nav-cta {
+            display: none;
+          }
+          .nav-toggle {
+            display: flex;
+          }
+        }
+      }
+
+      /* =============================================
+       HERO SECTION
+    ============================================= */
+      @layer components {
+        #hero {
+          min-height: 100svh;
+          display: grid;
+          place-items: center;
+          position: relative;
+          overflow: hidden;
+          padding-top: var(--nav-h);
+          background: var(--shimmer-hero);
+        }
+
+        /* Conic shimmer overlay for opal iridescence */
+        #hero::before {
+          content: "";
+          position: absolute;
+          inset: -50%;
+          background: conic-gradient(
+            from 0deg at 30% 40%,
+            rgba(242, 212, 224, 0.18) 0deg,
+            rgba(214, 232, 240, 0.18) 90deg,
+            rgba(212, 175, 114, 0.1) 180deg,
+            rgba(242, 212, 224, 0.18) 270deg,
+            rgba(214, 232, 240, 0.12) 360deg
+          );
+          mix-blend-mode: multiply;
+          animation: rotateOpal 20s linear infinite;
+          pointer-events: none;
+        }
+        #hero::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(
+            ellipse 50% 40% at 75% 55%,
+            rgba(212, 175, 114, 0.12) 0%,
+            transparent 60%
+          );
+          pointer-events: none;
+        }
+
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          text-align: center;
+          padding-block: var(--space-2xl);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--space-md);
+        }
+
+        .hero-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.6rem;
+          padding: 0.4em 1.2em;
+          background: rgba(212, 175, 114, 0.12);
+          border: 1px solid rgba(212, 175, 114, 0.25);
+          border-radius: var(--radius-xl);
+          backdrop-filter: blur(8px);
+        }
+        .hero-eyebrow::before {
+          content: "✦";
+          color: var(--c-gold);
+          font-size: 0.7rem;
+        }
+
+        .hero-title {
+          max-width: 14ch;
+          color: var(--c-primary);
+        }
+        .hero-title em {
+          font-style: italic;
+          background: linear-gradient(
+            135deg,
+            var(--c-gold-dark),
+            var(--c-gold),
+            var(--c-gold-light)
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+
+        .hero-tagline {
+          font-family: var(--font-serif);
+          font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+          font-style: italic;
+          font-weight: 300;
+          color: var(--c-primary-light);
+          max-width: 52ch;
+        }
+
+        .hero-ctas {
+          display: flex;
+          flex-wrap: wrap;
+          gap: var(--space-sm);
+          justify-content: center;
+          margin-top: var(--space-sm);
+        }
+
+        /* Sparkles / Floating stars */
+        .sparkle {
+          position: absolute;
+          pointer-events: none;
+          animation: floatSpark var(--dur, 6s) var(--delay, 0s) ease-in-out
+            infinite alternate;
+          will-change: transform, opacity;
+          filter: drop-shadow(0 0 4px rgba(212, 175, 114, 0.7));
+          opacity: 0.6;
+        }
+        .sparkle svg {
+          width: var(--sz, 18px);
+          height: var(--sz, 18px);
+        }
+
+        .s1 {
+          --dur: 7s;
+          --delay: 0s;
+          --sz: 14px;
+          top: 12%;
+          left: 8%;
+        }
+        .s2 {
+          --dur: 9s;
+          --delay: 1.5s;
+          --sz: 10px;
+          top: 22%;
+          left: 18%;
+        }
+        .s3 {
+          --dur: 6s;
+          --delay: 2s;
+          --sz: 18px;
+          top: 8%;
+          left: 50%;
+        }
+        .s4 {
+          --dur: 8s;
+          --delay: 0.5s;
+          --sz: 12px;
+          top: 30%;
+          right: 10%;
+        }
+        .s5 {
+          --dur: 7s;
+          --delay: 3s;
+          --sz: 16px;
+          top: 18%;
+          right: 22%;
+        }
+        .s6 {
+          --dur: 10s;
+          --delay: 1s;
+          --sz: 8px;
+          top: 60%;
+          left: 5%;
+        }
+        .s7 {
+          --dur: 5s;
+          --delay: 2.5s;
+          --sz: 20px;
+          top: 70%;
+          right: 6%;
+        }
+        .s8 {
+          --dur: 8s;
+          --delay: 4s;
+          --sz: 11px;
+          top: 80%;
+          left: 30%;
+        }
+        .s9 {
+          --dur: 6s;
+          --delay: 1s;
+          --sz: 14px;
+          top: 50%;
+          right: 30%;
+        }
+        .s10 {
+          --dur: 9s;
+          --delay: 3.5s;
+          --sz: 9px;
+          top: 90%;
+          right: 45%;
+        }
+      }
+
+      /* =============================================
+       ABOUT SECTION
+    ============================================= */
+      @layer components {
+        #about {
+          background: var(--c-bg);
+          position: relative;
+          overflow: hidden;
+        }
+        #about::before {
+          content: "";
+          position: absolute;
+          width: 600px;
+          height: 600px;
+          border-radius: 50%;
+          background: radial-gradient(
+            circle,
+            rgba(242, 212, 224, 0.25) 0%,
+            transparent 70%
+          );
+          top: -100px;
+          right: -150px;
+          pointer-events: none;
+        }
+
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: var(--space-2xl);
+          align-items: center;
+        }
+        @media (max-width: 767px) {
+          .about-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .about-visual {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: var(--space-md);
+        }
+
+        .about-monogram {
+          width: clamp(200px, 30vw, 280px);
+          height: clamp(200px, 30vw, 280px);
+          border-radius: 50%;
+          background: var(--shimmer-opal);
+          display: grid;
+          place-items: center;
+          position: relative;
+          box-shadow: var(--shadow-glow);
+          animation: pulseGlow 4s ease-in-out infinite alternate;
+        }
+        .about-monogram::before {
+          content: "";
+          position: absolute;
+          inset: -3px;
+          border-radius: 50%;
+          background: var(--shimmer-border);
+          background-size: 300% 300%;
+          animation: shimmerSlide 4s linear infinite;
+          z-index: -1;
+        }
+        .about-monogram-letter {
+          font-family: var(--font-serif);
+          font-size: clamp(4rem, 10vw, 6rem);
+          font-weight: 600;
+          color: var(--c-primary);
+          font-style: italic;
+          line-height: 1;
+        }
+
+        .about-stats {
+          display: flex;
+          gap: var(--space-md);
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+        .about-stat {
+          text-align: center;
+          background: rgba(212, 175, 114, 0.07);
+          border: 1px solid rgba(212, 175, 114, 0.18);
+          border-radius: var(--radius-md);
+          padding: var(--space-sm) var(--space-md);
+          min-width: 100px;
+        }
+        .about-stat-num {
+          font-family: var(--font-serif);
+          font-size: 2rem;
+          font-weight: 600;
+          color: var(--c-gold);
+          line-height: 1;
+        }
+        .about-stat-label {
+          font-size: 0.75rem;
+          color: var(--c-text-muted);
+          margin-top: 4px;
+        }
+
+        .about-text h2 {
+          color: var(--c-primary);
+        }
+        .about-text .hi {
+          font-style: italic;
+          color: var(--c-gold);
+        }
+        .about-text p {
+          margin-top: var(--space-sm);
+        }
+        .about-text .btn {
+          margin-top: var(--space-lg);
+        }
+      }
+
+      /* =============================================
+       SERVICES SECTION
+    ============================================= */
+      @layer components {
+        #services {
+          background: linear-gradient(
+            180deg,
+            var(--c-mist) 0%,
+            var(--c-bg) 100%
+          );
+          position: relative;
+          overflow: hidden;
+        }
+
+        .services-grid {
+          display: grid;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 300px), 1fr)
+          );
+          gap: var(--space-md);
+        }
+
+        .service-card {
+          background: var(--c-white);
+          border-radius: var(--radius-lg);
+          padding: var(--space-lg);
+          position: relative;
+          transition: var(--transition);
+          overflow: hidden;
+        }
+        .service-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 1.5px;
+          background: linear-gradient(
+            135deg,
+            var(--c-blush),
+            var(--c-blue),
+            var(--c-gold-light),
+            var(--c-blush)
+          );
+          background-size: 300% 300%;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: shimmerSlide 5s linear infinite;
+        }
+        .service-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background: var(--shimmer-opal);
+          opacity: 0;
+          transition: opacity 0.4s;
+        }
+        .service-card:hover {
+          transform: translateY(-8px) scale(1.01);
+          box-shadow:
+            var(--shadow-deep),
+            0 0 50px rgba(242, 212, 224, 0.2);
+        }
+        .service-card:hover::after {
+          opacity: 0.15;
+        }
+
+        .service-icon {
+          width: 52px;
+          height: 52px;
+          border-radius: var(--radius-md);
+          background: linear-gradient(
+            135deg,
+            rgba(212, 175, 114, 0.15),
+            rgba(242, 212, 224, 0.15)
+          );
+          display: grid;
+          place-items: center;
+          margin-bottom: var(--space-md);
+          font-size: 1.5rem;
+          filter: drop-shadow(0 2px 8px rgba(212, 175, 114, 0.3));
+          transition: transform 0.3s var(--ease-bounce);
+        }
+        .service-card:hover .service-icon {
+          transform: scale(1.15) rotate(5deg);
+        }
+
+        .service-card h3 {
+          color: var(--c-primary);
+          margin-bottom: 0.5em;
+          font-size: 1.2rem;
+        }
+        .service-card p {
+          font-size: 0.9rem;
+        }
+      }
+
+      /* =============================================
+       WHY CHOOSE EMY SECTION
+    ============================================= */
+      @layer components {
+        #why {
+          background: var(--c-primary);
+          position: relative;
+          overflow: hidden;
+        }
+        #why::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(
+              ellipse 60% 80% at 10% 50%,
+              rgba(212, 175, 114, 0.08) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              ellipse 50% 60% at 90% 30%,
+              rgba(242, 212, 224, 0.06) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              ellipse 40% 40% at 50% 90%,
+              rgba(214, 232, 240, 0.05) 0%,
+              transparent 50%
+            );
+          pointer-events: none;
+        }
+
+        #why .section-header h2 {
+          color: var(--c-gold);
+        }
+        #why .section-header p {
+          color: rgba(232, 239, 245, 0.7);
+        }
+
+        .why-grid {
+          display: grid;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 240px), 1fr)
+          );
+          gap: var(--space-md);
+        }
+
+        .why-card {
+          background: rgba(255, 255, 255, 0.04);
+          border: 1px solid rgba(212, 175, 114, 0.15);
+          border-radius: var(--radius-lg);
+          padding: var(--space-lg);
+          text-align: center;
+          transition: var(--transition);
+          position: relative;
+          overflow: hidden;
+        }
+        .why-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background: radial-gradient(
+            ellipse at 50% 0%,
+            rgba(212, 175, 114, 0.12),
+            transparent 60%
+          );
+          opacity: 0;
+          transition: opacity 0.4s;
+        }
+        .why-card:hover {
+          border-color: rgba(212, 175, 114, 0.4);
+          transform: translateY(-4px);
+        }
+        .why-card:hover::before {
+          opacity: 1;
+        }
+
+        .why-icon {
+          font-size: 2.2rem;
+          margin-bottom: var(--space-sm);
+          filter: drop-shadow(0 0 12px rgba(212, 175, 114, 0.5));
+        }
+        .why-card h3 {
+          color: var(--c-gold);
+          font-size: 1.15rem;
+          margin-bottom: 0.4em;
+        }
+        .why-card p {
+          color: rgba(232, 239, 245, 0.7);
+          font-size: 0.9rem;
+        }
+      }
+
+      /* =============================================
+       PORTFOLIO SECTION
+    ============================================= */
+      @layer components {
+        #portfolio {
+          background: var(--c-bg);
+          position: relative;
+        }
+
+        .portfolio-grid {
+          display: grid;
+          grid-template-columns: repeat(
+            3,
+            minmax(min(100%, 260px), 1fr)
+          );
+          justify-items: center;
+          gap: var(--space-md);
+        }
+
+        .portfolio-card {
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          position: relative;
+          transition: var(--transition);
+          cursor: pointer;
+          background: var(--c-white);
+          box-shadow: var(--shadow-soft);
+        }
+        .portfolio-card::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 2px;
+          background: linear-gradient(
+            135deg,
+            var(--c-blush),
+            var(--c-gold-light),
+            var(--c-blue),
+            var(--c-gold-light)
+          );
+          background-size: 300% 300%;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: shimmerSlide 6s linear infinite;
+        }
+        .portfolio-card:last-child {
+          grid-column:  2;
+        }
+        .portfolio-card:hover {
+          transform: scale(1.04);
+          box-shadow: var(--shadow-deep);
+        }
+
+        .port-thumb {
+          height: 180px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          overflow: hidden;
+          font-size: 3.5rem;
+        }
+        .port-thumb::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: inherit;
+          filter: blur(20px) saturate(1.5);
+          transform: scale(1.3);
+          opacity: 0.5;
+          z-index: 0;
+        }
+        .port-thumb-icon {
+          position: relative;
+          z-index: 1;
+          filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.15));
+        }
+
+        .port-info {
+          padding: var(--space-md);
+        }
+        .port-info .label-tag {
+          font-size: 0.68rem;
+          margin-bottom: 0.4em;
+        }
+        .port-info h4 {
+          color: var(--c-primary);
+          font-family: var(--font-serif);
+          font-size: 1.05rem;
+        }
+        .port-info p {
+          font-size: 0.82rem;
+          margin-top: 0.25em;
+        }
+      }
+
+      /* =============================================
+       PRICING SECTION
+    ============================================= */
+      @layer components {
+        #pricing {
+          background: linear-gradient(
+            180deg,
+            var(--c-bg),
+            var(--c-mist) 50%,
+            var(--c-bg)
+          );
+          position: relative;
+          overflow: hidden;
+        }
+        #pricing::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(
+              ellipse 60% 40% at 50% 0%,
+              rgba(212, 175, 114, 0.07) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              ellipse 40% 50% at 0% 50%,
+              rgba(242, 212, 224, 0.1) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              ellipse 40% 50% at 100% 50%,
+              rgba(214, 232, 240, 0.1) 0%,
+              transparent 60%
+            );
+          pointer-events: none;
+        }
+
+        .pricing-note {
+          text-align: center;
+          font-size: 0.85rem;
+          color: var(--c-text-muted);
+          font-style: italic;
+          margin-top: var(--space-lg);
+        }
+
+        /* Desktop table */
+        .pricing-table-wrap {
+          overflow-x: auto;
+          border-radius: var(--radius-lg);
+          box-shadow: var(--shadow-soft);
+        }
+
+        .pricing-table {
+          width: 100%;
+          border-collapse: collapse;
+          background: var(--c-white);
+          min-width: 640px;
+        }
+        .pricing-table th,
+        .pricing-table td {
+          padding: 0.9rem 1.2rem;
+          text-align: center;
+          border-bottom: 1px solid rgba(58, 47, 74, 0.06);
+          font-size: 0.9rem;
+        }
+        .pricing-table th {
+          background: var(--c-primary);
+          color: var(--c-gold);
+          font-family: var(--font-serif);
+          font-size: 1.05rem;
+          font-weight: 500;
+        }
+        .pricing-table th:first-child,
+        .pricing-table td:first-child {
+          text-align: left;
+          font-weight: 500;
+          color: var(--c-primary);
+          background: rgba(232, 239, 245, 0.4);
+        }
+        .pricing-table tr:last-child td {
+          border-bottom: none;
+        }
+        .pricing-table tr:hover td {
+          background: rgba(232, 239, 245, 0.4);
+        }
+
+        .pkg-popular th {
+          background: linear-gradient(
+            135deg,
+            #2a1f3a,
+            var(--c-primary),
+            #2a1f3a
+          ) !important;
+          position: relative;
+        }
+        .pkg-popular-badge {
+          display: inline-block;
+          background: var(--c-gold);
+          color: var(--c-primary);
+          font-size: 0.62rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          padding: 0.2em 0.7em;
+          border-radius: var(--radius-xl);
+          margin-left: 0.5em;
+          vertical-align: middle;
+          text-transform: uppercase;
+        }
+
+        .pkg-price {
+          font-family: var(--font-serif);
+          font-size: 1.6rem;
+          font-weight: 600;
+          color: var(--c-gold);
+          display: block;
+        }
+
+        /* Mobile pricing cards */
+        .pricing-cards {
+          display: none;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 300px), 1fr)
+          );
+          gap: var(--space-md);
+        }
+
+        .pricing-card {
+          border-radius: var(--radius-lg);
+          overflow: hidden;
+          background: var(--c-white);
+          box-shadow: var(--shadow-soft);
+          transition: var(--transition);
+          position: relative;
+        }
+        .pricing-card.popular {
+          box-shadow: var(--shadow-gold);
+        }
+        .pricing-card.popular::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          padding: 2px;
+          background: linear-gradient(
+            135deg,
+            var(--c-gold-dark),
+            var(--c-gold-light),
+            var(--c-gold-dark)
+          );
+          background-size: 200% 200%;
+          -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+          -webkit-mask-composite: xor;
+          mask-composite: exclude;
+          animation: shimmerSlide 3s linear infinite;
+        }
+        .pricing-card:hover {
+          transform: translateY(-6px);
+          box-shadow: var(--shadow-deep);
+        }
+
+        .pricing-card-head {
+          background: var(--c-primary);
+          padding: var(--space-lg);
+          text-align: center;
+        }
+        .pricing-card.popular .pricing-card-head {
+          background: linear-gradient(135deg, #2a1f3a, var(--c-primary));
+        }
+        .pricing-card-head h3 {
+          font-family: var(--font-serif);
+          color: var(--c-gold);
+          font-size: 1.5rem;
+        }
+        .pricing-card-head .price {
+          font-family: var(--font-serif);
+          font-size: 2.5rem;
+          font-weight: 600;
+          color: var(--c-white);
+          line-height: 1.1;
+        }
+        .pricing-card-head .scope {
+          font-size: 0.82rem;
+          color: rgba(232, 239, 245, 0.7);
+          margin-top: 0.3em;
+        }
+        .popular-badge {
+          display: inline-block;
+          background: var(--c-gold);
+          color: var(--c-primary);
+          font-size: 0.65rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          padding: 0.25em 0.9em;
+          border-radius: var(--radius-xl);
+          margin-bottom: 0.6em;
+          text-transform: uppercase;
+        }
+
+        .pricing-card-body {
+          padding: var(--space-md);
+        }
+
+        .pricing-feature {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.6rem 0;
+          border-bottom: 1px solid rgba(58, 47, 74, 0.06);
+          font-size: 0.88rem;
+        }
+        .pricing-feature:last-of-type {
+          border-bottom: none;
+        }
+        .pricing-feature-label {
+          color: var(--c-text-muted);
+        }
+        .pricing-feature-value {
+          font-weight: 500;
+          color: var(--c-primary);
+        }
+
+        .delivery-toggle {
+          margin-block: var(--space-md);
+          background: rgba(232, 239, 245, 0.6);
+          border-radius: var(--radius-md);
+          padding: var(--space-sm);
+        }
+        .delivery-toggle legend {
+          font-size: 0.78rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--c-text-muted);
+          margin-bottom: 0.5em;
+        }
+        .delivery-opts {
+          display: flex;
+          gap: 0.5rem;
+        }
+        .delivery-opts label {
+          flex: 1;
+          text-align: center;
+          padding: 0.5rem;
+          border-radius: var(--radius-sm);
+          font-size: 0.8rem;
+          cursor: pointer;
+          border: 1.5px solid transparent;
+          transition: var(--transition);
+          color: var(--c-text-muted);
+          user-select: none;
+        }
+        .delivery-opts input[type="radio"] {
+          display: none;
+        }
+        .delivery-opts input:checked + label {
+          background: var(--c-primary);
+          color: var(--c-gold);
+          border-color: var(--c-gold);
+          font-weight: 500;
+        }
+        .delivery-opts label:not(:has(+ input:checked)):hover {
+          border-color: rgba(58, 47, 74, 0.2);
+        }
+
+        .pricing-cta {
+          padding: var(--space-md);
+          padding-top: 0;
+        }
+        .pricing-cta .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        @media (max-width: 767px) {
+          .pricing-table-wrap {
+            display: none;
+          }
+          .pricing-cards {
+            display: grid;
+          }
+        }
+        @media (min-width: 768px) {
+          .pricing-cards {
+            display: none;
+          }
+          .pricing-table-wrap {
+            display: block;
+          }
+        }
+      }
+
+      /* =============================================
+       TESTIMONIALS SECTION
+    ============================================= */
+      @layer components {
+        #testimonials {
+          background: linear-gradient(
+            180deg,
+            var(--c-blush) 0%,
+            rgba(242, 212, 224, 0.3) 100%
+          );
+          position: relative;
+          overflow: hidden;
+        }
+        #testimonials::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(
+              ellipse 50% 60% at 80% 20%,
+              rgba(214, 232, 240, 0.35) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              ellipse 40% 40% at 20% 80%,
+              rgba(212, 175, 114, 0.1) 0%,
+              transparent 60%
+            );
+          pointer-events: none;
+        }
+
+        .testimonials-grid {
+          display: grid;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 300px), 1fr)
+          );
+          gap: var(--space-md);
+        }
+
+        .testimonial-card {
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(212, 175, 114, 0.15);
+          border-radius: var(--radius-lg);
+          padding: var(--space-lg);
+          position: relative;
+          transition: var(--transition);
+        }
+        .testimonial-card:hover {
+          transform: translateY(-4px);
+          box-shadow: var(--shadow-glow);
+        }
+
+        .quote-mark {
+          font-family: var(--font-serif);
+          font-size: 5rem;
+          font-weight: 700;
+          color: var(--c-gold);
+          line-height: 0.6;
+          margin-bottom: var(--space-sm);
+          opacity: 0.6;
+          display: block;
+        }
+
+        .testimonial-text {
+          font-family: var(--font-serif);
+          font-size: clamp(1rem, 1.8vw, 1.15rem);
+          font-style: italic;
+          font-weight: 300;
+          color: var(--c-primary);
+          line-height: 1.7;
+          margin-bottom: var(--space-md);
+        }
+
+        .testimonial-author {
+          display: flex;
+          align-items: center;
+          gap: var(--space-sm);
+        }
+        .author-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: var(--shimmer-opal);
+          display: grid;
+          place-items: center;
+          font-family: var(--font-serif);
+          font-size: 1.1rem;
+          font-weight: 600;
+          color: var(--c-primary);
+          flex-shrink: 0;
+          border: 2px solid rgba(212, 175, 114, 0.3);
+        }
+        .author-name {
+          font-weight: 600;
+          font-size: 0.9rem;
+          color: var(--c-primary);
+        }
+        .author-role {
+          font-size: 0.78rem;
+          color: var(--c-text-muted);
+        }
+      }
+
+      /* =============================================
+       CONTACT SECTION
+    ============================================= */
+      @layer components {
+        #contact {
+          position: relative;
+          overflow: hidden;
+          background: var(--c-primary);
+        }
+        #contact::before {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background:
+            radial-gradient(
+              ellipse 70% 50% at 10% 30%,
+              rgba(212, 175, 114, 0.1) 0%,
+              transparent 60%
+            ),
+            radial-gradient(
+              ellipse 60% 60% at 90% 70%,
+              rgba(242, 212, 224, 0.07) 0%,
+              transparent 60%
+            ),
+            conic-gradient(
+              from 180deg at 50% 110%,
+              rgba(214, 232, 240, 0.06) 0deg,
+              transparent 120deg
+            );
+          pointer-events: none;
+        }
+
+        #contact .section-header h2 {
+          color: var(--c-gold);
+        }
+        #contact .section-header p {
+          color: rgba(232, 239, 245, 0.7);
+        }
+
+        .contact-email-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--c-gold);
+          font-weight: 500;
+          transition: color 0.3s;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+        .contact-email-link:hover {
+          color: var(--c-gold-light);
+        }
+
+        .contact-layout {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: var(--space-2xl);
+          align-items: start;
+        }
+        @media (max-width: 767px) {
+          .contact-layout {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .contact-info h3 {
+          font-family: var(--font-serif);
+          color: var(--c-gold);
+          font-size: 1.5rem;
+          margin-bottom: var(--space-md);
+        }
+        .contact-info p {
+          color: rgba(232, 239, 245, 0.75);
+          margin-bottom: var(--space-md);
+        }
+
+        .contact-detail {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          padding: var(--space-sm) 0;
+          border-bottom: 1px solid rgba(212, 175, 114, 0.1);
+          color: rgba(232, 239, 245, 0.8);
+          font-size: 0.9rem;
+        }
+        .contact-detail:last-child {
+          border-bottom: none;
+        }
+        .contact-detail-icon {
+          color: var(--c-gold);
+          font-size: 1.1rem;
+        }
+
+        /* Form */
+        .contact-form {
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(212, 175, 114, 0.15);
+          border-radius: var(--radius-xl);
+          padding: var(--space-lg);
+          display: flex;
+          flex-direction: column;
+          gap: var(--space-md);
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+        .form-label {
+          font-size: 0.8rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: rgba(232, 239, 245, 0.6);
+        }
+        .form-input {
+          background: rgba(255, 255, 255, 0.07);
+          border: 1.5px solid rgba(212, 175, 114, 0.18);
+          border-radius: var(--radius-md);
+          padding: 0.8rem 1rem;
+          color: var(--c-mist);
+          font-size: 0.95rem;
+          transition:
+            border-color 0.3s,
+            background 0.3s;
+        }
+        .form-input::placeholder {
+          color: rgba(232, 239, 245, 0.3);
+        }
+        .form-input:focus {
+          border-color: var(--c-gold);
+          background: rgba(255, 255, 255, 0.1);
+          outline: none;
+        }
+        .form-input:valid:not(:placeholder-shown) {
+          border-color: rgba(212, 175, 114, 0.45);
+        }
+        .form-input:invalid:not(:placeholder-shown):not(:focus) {
+          border-color: rgba(242, 212, 224, 0.4);
+        }
+        textarea.form-input {
+          min-height: 130px;
+          resize: vertical;
+        }
+
+        .form-status {
+          font-size: 0.85rem;
+          padding: 0.6rem 1rem;
+          border-radius: var(--radius-sm);
+          display: none;
+        }
+        .form-status.success {
+          display: block;
+          background: rgba(212, 175, 114, 0.15);
+          color: var(--c-gold);
+          border: 1px solid rgba(212, 175, 114, 0.3);
+        }
+        .form-status.error {
+          display: block;
+          background: rgba(242, 212, 224, 0.1);
+          color: #f2d4e0;
+          border: 1px solid rgba(242, 212, 224, 0.3);
+        }
+      }
+
+      /* =============================================
+       FOOTER
+    ============================================= */
+      @layer components {
+        #footer {
+          background: #241a34;
+          padding-block: var(--space-xl);
+          border-top: 1px solid rgba(212, 175, 114, 0.12);
+        }
+
+        .footer-inner {
+          display: grid;
+          grid-template-columns: 1fr auto;
+          align-items: center;
+          gap: var(--space-lg);
+        }
+        @media (max-width: 600px) {
+          .footer-inner {
+            grid-template-columns: 1fr;
+            text-align: center;
+          }
+          .footer-social {
+            justify-content: center;
+          }
+        }
+
+        .footer-brand h2 {
+          font-family: var(--font-serif);
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          color: var(--c-gold);
+          font-weight: 600;
+          letter-spacing: -0.01em;
+        }
+        .footer-tagline {
+          font-size: 0.85rem;
+          color: rgba(232, 239, 245, 0.5);
+          margin-top: 0.3em;
+          font-style: italic;
+          font-family: var(--font-serif);
+        }
+        .footer-copy {
+          font-size: 0.75rem;
+          color: rgba(232, 239, 245, 0.3);
+          margin-top: var(--space-sm);
+        }
+
+        .footer-social {
+          display: flex;
+          align-items: center;
+          gap: var(--space-sm);
+        }
+        .social-link {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          border: 1px solid rgba(212, 175, 114, 0.2);
+          display: grid;
+          place-items: center;
+          color: var(--c-gold);
+          transition: var(--transition);
+          filter: drop-shadow(0 0 0 rgba(212, 175, 114, 0));
+        }
+        .social-link:hover {
+          background: rgba(212, 175, 114, 0.1);
+          border-color: var(--c-gold);
+          transform: translateY(-3px);
+          filter: drop-shadow(0 0 8px rgba(212, 175, 114, 0.4));
+        }
+        .social-link svg {
+          width: 18px;
+          height: 18px;
+          fill: currentColor;
+        }
+      }
+
+      /* =============================================
+       ANIMATIONS
+    ============================================= */
+      @layer animations {
+        @keyframes shimmerSlide {
+          0% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+          100% {
+            background-position: 0% 50%;
+          }
+        }
+
+        @keyframes rotateOpal {
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
+        }
+
+        @keyframes pulseGlow {
+          from {
+            box-shadow: 0 8px 40px rgba(212, 175, 114, 0.18);
+          }
+          to {
+            box-shadow:
+              0 12px 60px rgba(212, 175, 114, 0.35),
+              0 0 80px rgba(242, 212, 224, 0.2);
+          }
+        }
+
+        @keyframes floatSpark {
+          0% {
+            transform: translateY(0) rotate(0deg) scale(1);
+            opacity: 0.5;
+          }
+          50% {
+            transform: translateY(-18px) rotate(20deg) scale(1.1);
+            opacity: 0.8;
+          }
+          100% {
+            transform: translateY(-8px) rotate(-10deg) scale(0.95);
+            opacity: 0.4;
+          }
+        }
+
+        @keyframes fadeSlideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes scaleIn {
+          from {
+            opacity: 0;
+            transform: scale(0.92);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+
+        /* Scroll-triggered animation classes */
+        .anim-hidden {
+          opacity: 0;
+          transform: translateY(28px);
+          transition:
+            opacity 0.7s var(--ease-luxury),
+            transform 0.7s var(--ease-luxury);
+        }
+        .anim-hidden.anim-visible {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Stagger delays */
+        .stagger-1 {
+          transition-delay: 0.1s;
+        }
+        .stagger-2 {
+          transition-delay: 0.2s;
+        }
+        .stagger-3 {
+          transition-delay: 0.3s;
+        }
+        .stagger-4 {
+          transition-delay: 0.4s;
+        }
+        .stagger-5 {
+          transition-delay: 0.5s;
+        }
+        .stagger-6 {
+          transition-delay: 0.6s;
+        }
+
+        /* Hero enters */
+        .hero-eyebrow {
+          animation: fadeSlideUp 0.8s var(--ease-luxury) 0.2s both;
+        }
+        .hero-title {
+          animation: fadeSlideUp 0.8s var(--ease-luxury) 0.4s both;
+        }
+        .hero-tagline {
+          animation: fadeSlideUp 0.8s var(--ease-luxury) 0.6s both;
+        }
+        .hero-ctas {
+          animation: fadeSlideUp 0.8s var(--ease-luxury) 0.8s both;
+        }
+      }
+
+      /* =============================================
+       DARK MODE (subtle)
+    ============================================= */
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --c-bg: #1e1826;
+          --c-white: #2a2138;
+          --c-text: #ede8f5;
+          --c-text-muted: #a89cbd;
+          --c-mist: #2c2440;
+          --c-blush: rgba(242, 212, 224, 0.08);
+        }
+        #navbar {
+          background: rgba(30, 24, 38, 0.85);
+        }
+        .nav-logo {
+          color: var(--c-gold);
+        }
+        .nav-links a {
+          color: var(--c-mist);
+        }
+      }
+
+      /* =============================================
+       REDUCED MOTION
+    ============================================= */
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+        .sparkle {
+          display: none;
+        }
+        html {
+          scroll-behavior: auto;
+        }
+      }
+
+      /* =============================================
+       UTILITY LAYER
+    ============================================= */
+      @layer utilities {
+        .text-center {
+          text-align: center;
+        }
+        .mt-auto {
+          margin-top: auto;
+        }
+        .w-full {
+          width: 100%;
+        }
+        .relative {
+          position: relative;
+        }
+        .z1 {
+          position: relative;
+          z-index: 1;
+        }
+      }
+
+      /* =============================================
+       SCROLL PROGRESS BAR
+    ============================================= */
+      #progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 2.5px;
+        background: linear-gradient(
+          90deg,
+          var(--c-gold-dark),
+          var(--c-gold),
+          var(--c-gold-light)
+        );
+        z-index: 9999;
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform 0.1s linear;
+      }
+
+      /* =============================================
+       MISC HELPERS
+    ============================================= */
+      .gold-rule {
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--c-gold),
+          transparent
+        );
+        margin-block: var(--space-xl);
+        opacity: 0.4;
+      }
+
+      .tag-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        background: rgba(212, 175, 114, 0.1);
+        border: 1px solid rgba(212, 175, 114, 0.22);
+        color: var(--c-gold);
+        border-radius: var(--radius-xl);
+        padding: 0.3em 1em;
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+
+      .feat-check::before {
+        content: "✓ ";
+      }
+      .feat-cross::before {
+        content: "✗ ";
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ==========================================
+     SCROLL PROGRESS BAR
+=========================================== -->
+    <div id="progress-bar" aria-hidden="true"></div>
+
+    <!-- ==========================================
+     NAVIGATION
+=========================================== -->
+    <header role="banner">
+      <nav id="navbar" aria-label="Main navigation">
+        <div class="container nav-inner">
+          <!--  Brand name -->
+          <a href="#hero" class="nav-logo"
+            >Idara's <span>E-Business Hub</span></a
+          >
+
+          <div class="nav-links" role="list">
+            <a href="#about" role="listitem">About</a>
+            <a href="#services" role="listitem">Services</a>
+            <a href="#portfolio" role="listitem">Portfolio</a>
+            <a href="#pricing" role="listitem">Pricing</a>
+            <a href="#contact" role="listitem">Contact</a>
+          </div>
+
+          <!--  CTA button text/link -->
+          <a
+            href="#contact"
+            class="btn btn-gold nav-cta"
+            aria-label="Work with Emy"
+            >Work With Me ✦</a
+          >
+
+          <button
+            class="nav-toggle"
+            id="navToggle"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="navMobile"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Mobile nav -->
+      <div
+        class="nav-mobile"
+        id="navMobile"
+        role="dialog"
+        aria-label="Mobile navigation"
+      >
+        <a href="#about" class="nav-mobile-link">About</a>
+        <a href="#services" class="nav-mobile-link">Services</a>
+        <a href="#portfolio" class="nav-mobile-link">Portfolio</a>
+        <a href="#pricing" class="nav-mobile-link">Pricing</a>
+        <a href="#contact" class="nav-mobile-link">Contact</a>
+        <a href="#contact" class="btn btn-gold">Work With Me ✦</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ==========================================
+     HERO SECTION
+=========================================== -->
+      <section id="hero" aria-label="Hero - Welcome to Idara's E-Business Hub">
+        <!-- Floating sparkles -->
+        <div class="sparkle s1" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D4AF72"
+              d="M10 0l1.8 6.5L20 10l-8.2 3.5L10 20l-1.8-6.5L0 10l8.2-3.5z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s2" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#F2D4E0"
+              d="M10 0l1.8 6.5L20 10l-8.2 3.5L10 20l-1.8-6.5L0 10l8.2-3.5z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s3" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D4AF72"
+              d="M10 2l1.4 5.2L18 10l-6.6 2.8L10 18l-1.4-5.2L2 10l6.6-2.8z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s4" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D6E8F0"
+              d="M10 0l1.8 6.5L20 10l-8.2 3.5L10 20l-1.8-6.5L0 10l8.2-3.5z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s5" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#F2D4E0"
+              d="M10 2l1.4 5.2L18 10l-6.6 2.8L10 18l-1.4-5.2L2 10l6.6-2.8z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s6" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D4AF72"
+              d="M10 0l1.8 6.5L20 10l-8.2 3.5L10 20l-1.8-6.5L0 10l8.2-3.5z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s7" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D6E8F0"
+              d="M10 2l1.4 5.2L18 10l-6.6 2.8L10 18l-1.4-5.2L2 10l6.6-2.8z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s8" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#F2D4E0"
+              d="M10 0l1.8 6.5L20 10l-8.2 3.5L10 20l-1.8-6.5L0 10l8.2-3.5z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s9" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D4AF72"
+              d="M10 2l1.4 5.2L18 10l-6.6 2.8L10 18l-1.4-5.2L2 10l6.6-2.8z"
+            />
+          </svg>
+        </div>
+        <div class="sparkle s10" aria-hidden="true">
+          <svg viewBox="0 0 20 20">
+            <path
+              fill="#D6E8F0"
+              d="M10 0l1.8 6.5L20 10l-8.2 3.5L10 20l-1.8-6.5L0 10l8.2-3.5z"
+            />
+          </svg>
+        </div>
+
+        <div class="container">
+          <div class="hero-content">
+            <div class="hero-eyebrow label-tag">
+              Educational Design &amp; Branding Specialist
+            </div>
+
+            <!--  Hero headline -->
+            <h1 class="hero-title">
+              Where <em>Ideas</em> Become<br />
+              Radiant <em>Resources</em>
+            </h1>
+
+            <!--  Hero tagline -->
+            <p class="hero-tagline serif-italic">
+              I'm Emy — I create beautiful study guides, workbooks, ebooks &amp;
+              branding<br />
+              materials that captivate, educate, and inspire.
+            </p>
+
+            <div class="hero-ctas">
+              <a href="#services" class="btn btn-gold">Explore My Work ✦</a>
+              <a href="#contact" class="btn btn-outline">Work With Me →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     ABOUT SECTION
+=========================================== -->
+      <section id="about" class="section-pad" aria-label="About Emy">
+        <div class="container">
+          <div class="about-grid">
+            <div class="about-visual anim-hidden">
+              <div class="about-monogram" aria-hidden="true">
+                <span class="about-monogram-letter"
+                  ><img
+                    src="./images/FB_IMG_1771328728740.jpg"
+                    alt="Emy"
+                    style="border-radius: 50%"
+                /></span>
+              </div>
+              <div class="about-stats">
+                <!--  Update statistics -->
+                <div class="about-stat">
+                  <div class="about-stat-num">100+</div>
+                  <div class="about-stat-label">Projects Delivered</div>
+                </div>
+                <div class="about-stat">
+                  <div class="about-stat-num">6+</div>
+                  <div class="about-stat-label">Service Types</div>
+                </div>
+                <div class="about-stat">
+                  <div class="about-stat-num">★★★★★</div>
+                  <div class="about-stat-label">Client Satisfaction</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="about-text anim-hidden stagger-2">
+              <div class="label-tag" style="margin-bottom: 0.6em">
+                About Emy
+              </div>
+              <h2>
+                <span class="hi">Hi, I'm Emy!</span><br />Your Creative Partner
+                in Learning &amp; Branding
+              </h2>
+
+              <!--  Bio text -->
+              <p>
+                I specialize in educational design and branding — creating
+                engaging study guides, workbooks, ebooks, courses,and branding resources
+                that are clear, professional, and visually appealing.
+              </p>
+              <p style="margin-top: 0.75rem">
+                From children's books and devotional guides to planners,
+                packaging guides, nursing study materials, and course content — I make content
+                both impactful and easy to use.
+              </p>
+              <p style="margin-top: 0.75rem">
+                With experience across education and business, I transform ideas
+                into polished, creative resources that inspire and stand out.
+                Whether you're an educator, entrepreneur, student, or small
+                business owner, I bring your vision to life with heart and
+                precision.
+              </p>
+
+              <div
+                style="
+                  display: flex;
+                  flex-wrap: wrap;
+                  gap: 0.5rem;
+                  margin-top: 1.25rem;
+                "
+              >
+                <span class="tag-pill">✦ Study Guides</span>
+                <span class="tag-pill">✦ Branding</span>
+                <span class="tag-pill">✦ Workbooks</span>
+                <span class="tag-pill">✦ Ebooks</span>
+                <span class="tag-pill">✦ Courses</span>
+              </div>
+
+              <a
+                href="#contact"
+                class="btn btn-primary"
+                style="margin-top: 1.5rem"
+                >Let's Create Together →</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     SERVICES SECTION
+=========================================== -->
+      <section
+        id="services"
+        class="section-pad"
+        aria-label="Services offered by Emy"
+      >
+        <div class="container">
+          <div class="section-header anim-hidden">
+            <div class="label-tag">What I Offer</div>
+            <h2>Services That <em class="serif-italic">Shine</em></h2>
+            <p>
+              Every resource I create is crafted with intention — beautifully
+              designed, clearly structured, and built to make an impact.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <!--  Services list -->
+            <article
+              class="service-card anim-hidden stagger-1"
+              aria-label="Study Guides and Workbooks"
+            >
+              <div class="service-icon" aria-hidden="true">📚</div>
+              <h3>Study Guides, Workbooks &amp; Courses</h3>
+              <p>
+                Expertly written and beautifully designed study materials that
+                make complex topics clear, engaging, and memorable.
+              </p>
+            </article>
+
+            <article
+              class="service-card anim-hidden stagger-2"
+              aria-label="Ebooks and Digital Resources"
+            >
+              <div class="service-icon" aria-hidden="true">💻</div>
+              <h3>Ebooks &amp; Digital Resources</h3>
+              <p>
+                Polished digital publications and learning resources that
+                captivate readers and deliver real value on any device.
+              </p>
+            </article>
+
+            <article
+              class="service-card anim-hidden stagger-3"
+              aria-label="Branding and Identity Design"
+            >
+              <div class="service-icon" aria-hidden="true">✨</div>
+              <h3>Branding &amp; Identity Design</h3>
+              <p>
+                Cohesive brand identities that tell your story — from logos and
+                color palettes to complete brand style guides.
+              </p>
+            </article>
+
+            <article
+              class="service-card anim-hidden stagger-4"
+              aria-label="Children's Books and Devotional Guides"
+            >
+              <div class="service-icon" aria-hidden="true">🌸</div>
+              <h3>Children's Books &amp; Devotional Guides</h3>
+              <p>
+                Heartfelt, beautifully illustrated content designed to inspire,
+                nurture, and connect with young and spiritual audiences.
+              </p>
+            </article>
+
+            <article
+              class="service-card anim-hidden stagger-5"
+              aria-label="Planners and Packaging Design"
+            >
+              <div class="service-icon" aria-hidden="true">🗓️</div>
+              <h3>Planners &amp; Packaging Design</h3>
+              <p>
+                Functional and gorgeous planners, organizers, and product
+                packaging that blend usability with striking aesthetics.
+              </p>
+            </article>
+
+            <article
+              class="service-card anim-hidden stagger-6"
+              aria-label="Nursing and Educational Study Materials"
+            >
+              <div class="service-icon" aria-hidden="true">🩺</div>
+              <h3>Nursing &amp; Educational Study Materials</h3>
+              <p>
+                Specialized, research-backed study resources crafted
+                specifically for nursing students and healthcare educators.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     WHY CHOOSE EMY SECTION
+=========================================== -->
+      <section id="why" class="section-pad" aria-label="Why choose Emy">
+        <div class="container z1">
+          <div class="section-header anim-hidden">
+            <div class="label-tag" style="color: rgba(212, 175, 114, 0.7)">
+              Why Emy
+            </div>
+            <h2>The Idara's E-Business Hub Difference</h2>
+            <p>
+              When you work with me, you get more than beautiful design — you
+              get a partner who truly cares about your outcome.
+            </p>
+          </div>
+
+          <div class="why-grid">
+            <!--  Value highlights -->
+            <div class="why-card anim-hidden stagger-1">
+              <div class="why-icon" aria-hidden="true">🎯</div>
+              <h3>Clear &amp; Professional</h3>
+              <p>
+                Every deliverable is polished, precise, and built to the highest
+                professional standard — no fluff, no guesswork.
+              </p>
+            </div>
+
+            <div class="why-card anim-hidden stagger-2">
+              <div class="why-icon" aria-hidden="true">🌈</div>
+              <h3>Visually Engaging</h3>
+              <p>
+                I combine stunning aesthetics with functional design so your
+                audience stays engaged and keeps coming back for more.
+              </p>
+            </div>
+
+            <div class="why-card anim-hidden stagger-3">
+              <div class="why-icon" aria-hidden="true">🎓</div>
+              <h3>Education + Business Experience</h3>
+              <p>
+                Bridging the gap between academia and entrepreneurship — I
+                understand both worlds and design for both audiences.
+              </p>
+            </div>
+
+            <div class="why-card anim-hidden stagger-4">
+              <div class="why-icon" aria-hidden="true">💎</div>
+              <h3>Tailored to Your Vision</h3>
+              <p>
+                No cookie-cutter templates here. Every project is uniquely
+                crafted to reflect your voice, goals, and brand identity.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     PORTFOLIO SECTION
+=========================================== -->
+      <section
+        id="portfolio"
+        class="section-pad"
+        aria-label="Portfolio showcase"
+      >
+        <div class="container">
+          <div class="section-header anim-hidden">
+            <div class="label-tag">Portfolio</div>
+            <h2>Work That <em class="serif-italic">Speaks</em></h2>
+            <p>
+              A glimpse into the resources, brands, and experiences I've crafted
+              for clients across education and business.
+            </p>
+          </div>
+
+          <div class="portfolio-grid">
+            <!--  Portfolio items — replace with real project names and images -->
+            <article class="portfolio-card anim-hidden stagger-1">
+              <div
+                class="port-thumb"
+                style="background: linear-gradient(135deg, #f2d4e0, #d6e8f0)"
+              >
+                <span class="port-thumb-icon">🩺</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Study Guide</div>
+                <h4>Nursing Study Guide</h4>
+                <p>
+                  Comprehensive clinical reference with technical illustrations
+                </p>
+              </div>
+            </article>
+
+            <article class="portfolio-card anim-hidden stagger-2">
+              <div
+                class="port-thumb"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    rgba(212, 175, 114, 0.25),
+                    rgba(242, 212, 224, 0.4)
+                  );
+                "
+              >
+                <span class="port-thumb-icon">✨</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Branding</div>
+                <h4>Brand Kit</h4>
+                <p>
+                  Full identity system including logo, palette, and style guide
+                </p>
+              </div>
+            </article>
+
+            <article class="portfolio-card anim-hidden stagger-3">
+              <div
+                class="port-thumb"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    #d6e8f0,
+                    rgba(212, 175, 114, 0.2)
+                  );
+                "
+              >
+                <span class="port-thumb-icon">🌸</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Children's Book</div>
+                <h4>Children's Book</h4>
+                <p>Illustrated storybook with character design and layout</p>
+              </div>
+            </article>
+
+            <article class="portfolio-card anim-hidden stagger-4">
+              <div
+                class="port-thumb"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    rgba(242, 212, 224, 0.5),
+                    rgba(214, 232, 240, 0.4)
+                  );
+                "
+              >
+                <span class="port-thumb-icon">📖</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Workbook</div>
+                <h4>Student Workbook</h4>
+                <p>
+                  Interactive learning workbook with exercises and assessments
+                </p>
+              </div>
+            </article>
+
+            <article class="portfolio-card anim-hidden stagger-5">
+              <div
+                class="port-thumb"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    rgba(212, 175, 114, 0.15),
+                    rgba(242, 212, 224, 0.35)
+                  );
+                "
+              >
+                <span class="port-thumb-icon">🙏</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Devotional</div>
+                <h4>Devotional Guide</h4>
+                <p>
+                  Reflective devotional with elegant layouts and scripture
+                  design
+                </p>
+              </div>
+            </article>
+
+            <article class="portfolio-card anim-hidden stagger-6">
+              <div
+                class="port-thumb"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    rgba(214, 232, 240, 0.5),
+                    rgba(212, 175, 114, 0.25)
+                  );
+                "
+              >
+                <span class="port-thumb-icon">🗓️</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Planner</div>
+                <h4>Business Planner</h4>
+                <p>Goal-setting and productivity planner for entrepreneurs</p>
+              </div>
+            </article>
+
+            <article class="portfolio-card anim-hidden stagger-7">
+              <div
+                
+                class="port-thumb"
+                style="
+                  background: linear-gradient(
+                    135deg,
+                    rgba(212, 175, 114, 0.15),
+                    rgba(242, 212, 224, 0.35)
+                  );
+                "
+              >
+                <span class="port-thumb-icon">📚</span>
+              </div>
+              <div class="port-info">
+                <div class="label-tag">Courses</div>
+                <h4>Course Creation</h4>
+                <p>
+                  End-to-end course design including content, visuals, and
+                  structure
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     PRICING SECTION
+=========================================== -->
+      <section id="pricing" class="section-pad" aria-label="Pricing packages">
+        <div class="container">
+          <div class="section-header anim-hidden">
+            <div class="label-tag">Pricing</div>
+            <h2>Invest in <em class="serif-italic">Excellence</em></h2>
+            <p>
+              Transparent, value-packed packages designed to meet you exactly
+              where you are.
+            </p>
+          </div>
+
+          <!-- DESKTOP: Comparison Table -->
+          <div class="pricing-table-wrap anim-hidden">
+            <table class="pricing-table" aria-label="Pricing comparison table">
+              <thead>
+                <tr>
+                  <th scope="col">Feature</th>
+                  <!-- Package names & prices -->
+                  <th scope="col">
+                    Basic<br />
+                    <span class="pkg-price">US$90</span>
+                  </th>
+                  <th scope="col" class="pkg-popular">
+                    Standard <span class="pkg-popular-badge">Most Popular</span
+                    ><br />
+                    <span class="pkg-price">US$1,000</span>
+                  </th>
+                  <th scope="col">
+                    Premium<br />
+                    <span class="pkg-price">US$1,600</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Scope</td>
+                  <td>Single topic or chapter</td>
+                  <td>Up to 15 topics/chapters</td>
+                  <td>Up to 25 topics/chapters</td>
+                </tr>
+                <tr>
+                  <td>Proofreading &amp; Editing</td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Additional Research</td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>References &amp; Citations</td>
+                  <td>
+                    <span class="feat-cross" aria-label="Not included">✗</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Style Guide Formatted</td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                  <td>
+                    <span class="feat-check" aria-label="Included">✓</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Words Included</td>
+                  <td>10,000</td>
+                  <td>20,000</td>
+                  <td>25,000</td>
+                </tr>
+                <tr>
+                  <td>Technical Illustrations</td>
+                  <td>30</td>
+                  <td>50</td>
+                  <td>120</td>
+                </tr>
+                <tr>
+                  <td>Revisions</td>
+                  <td>3</td>
+                  <td>Unlimited</td>
+                  <td>Unlimited</td>
+                </tr>
+                <tr>
+                  <td>Standard Delivery</td>
+                  <td>14 days</td>
+                  <td>21 days</td>
+                  <td>21 days</td>
+                </tr>
+                <tr>
+                  <td>Express Delivery</td>
+                  <td>
+                    7 days
+                    <span style="color: var(--c-gold); font-size: 0.82rem"
+                      >(+US$120)</span
+                    >
+                  </td>
+                  <td>
+                    14 days
+                    <span style="color: var(--c-gold); font-size: 0.82rem"
+                      >(+US$200)</span
+                    >
+                  </td>
+                  <td>
+                    14 days
+                    <span style="color: var(--c-gold); font-size: 0.82rem"
+                      >(+US$500)</span
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td></td>
+                  <td>
+                    <a
+                      href="#contact"
+                      class="btn btn-outline"
+                      style="font-size: 0.82rem; padding: 0.6em 1.3em"
+                      >Get Started →</a
+                    >
+                  </td>
+                  <td>
+                    <a
+                      href="#contact"
+                      class="btn btn-gold"
+                      style="font-size: 0.82rem; padding: 0.6em 1.3em"
+                      >Get Started →</a
+                    >
+                  </td>
+                  <td>
+                    <a
+                      href="#contact"
+                      class="btn btn-primary"
+                      style="font-size: 0.82rem; padding: 0.6em 1.3em"
+                      >Get Started →</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- MOBILE: Card Layout -->
+          <div class="pricing-cards" aria-label="Pricing packages as cards">
+            <!-- Basic Card -->
+            <div class="pricing-card anim-hidden stagger-1">
+              <div class="pricing-card-head">
+                <h3>Basic</h3>
+                <!--  Prices -->
+                <div class="price">US$90</div>
+                <div class="scope">Single topic or chapter</div>
+              </div>
+              <div class="pricing-card-body">
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >Proofreading &amp; Editing</span
+                  ><span class="feat-check" aria-label="Included">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Additional Research</span
+                  ><span class="feat-check" aria-label="Included">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >References &amp; Citations</span
+                  ><span class="feat-cross" aria-label="Not included">✗</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >Style Guide Formatted</span
+                  ><span class="feat-check" aria-label="Included">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Words</span
+                  ><span class="pricing-feature-value">10,000</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Illustrations</span
+                  ><span class="pricing-feature-value">30</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Revisions</span
+                  ><span class="pricing-feature-value">3</span>
+                </div>
+
+                <fieldset class="delivery-toggle">
+                  <legend>Delivery</legend>
+                  <div class="delivery-opts">
+                    <input
+                      type="radio"
+                      name="delivery-basic"
+                      id="std-basic"
+                      value="standard"
+                      checked
+                    />
+                    <label for="std-basic">Standard (14 days)</label>
+                    <input
+                      type="radio"
+                      name="delivery-basic"
+                      id="exp-basic"
+                      value="express"
+                    />
+                    <label for="exp-basic">Express (7 days +$120)</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="pricing-cta">
+                <a href="#contact" class="btn btn-outline">Get Started →</a>
+              </div>
+            </div>
+
+            <!-- Standard Card (Popular) -->
+            <div class="pricing-card popular anim-hidden stagger-2">
+              <div class="pricing-card-head">
+                <div class="popular-badge">★ Most Popular</div>
+                <h3>Standard</h3>
+                <div class="price">US$1,000</div>
+                <div class="scope">Up to 15 topics/chapters</div>
+              </div>
+              <div class="pricing-card-body">
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >Proofreading &amp; Editing</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Additional Research</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >References &amp; Citations</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >Style Guide Formatted</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Words</span
+                  ><span class="pricing-feature-value">20,000</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Illustrations</span
+                  ><span class="pricing-feature-value">50</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Revisions</span
+                  ><span class="pricing-feature-value">Unlimited</span>
+                </div>
+
+                <fieldset class="delivery-toggle">
+                  <legend>Delivery</legend>
+                  <div class="delivery-opts">
+                    <input
+                      type="radio"
+                      name="delivery-std"
+                      id="std-std"
+                      value="standard"
+                      checked
+                    />
+                    <label for="std-std">Standard (21 days)</label>
+                    <input
+                      type="radio"
+                      name="delivery-std"
+                      id="exp-std"
+                      value="express"
+                    />
+                    <label for="exp-std">Express (14 days +$200)</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="pricing-cta">
+                <a href="#contact" class="btn btn-gold">Get Started →</a>
+              </div>
+            </div>
+
+            <!-- Premium Card -->
+            <div class="pricing-card anim-hidden stagger-3">
+              <div class="pricing-card-head">
+                <h3>Premium</h3>
+                <div class="price">US$1,600</div>
+                <div class="scope">Up to 25 topics/chapters</div>
+              </div>
+              <div class="pricing-card-body">
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >Proofreading &amp; Editing</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Additional Research</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >References &amp; Citations</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label"
+                    >Style Guide Formatted</span
+                  ><span class="feat-check">✓</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Words</span
+                  ><span class="pricing-feature-value">25,000</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Illustrations</span
+                  ><span class="pricing-feature-value">120</span>
+                </div>
+                <div class="pricing-feature">
+                  <span class="pricing-feature-label">Revisions</span
+                  ><span class="pricing-feature-value">Unlimited</span>
+                </div>
+
+                <fieldset class="delivery-toggle">
+                  <legend>Delivery</legend>
+                  <div class="delivery-opts">
+                    <input
+                      type="radio"
+                      name="delivery-prem"
+                      id="std-prem"
+                      value="standard"
+                      checked
+                    />
+                    <label for="std-prem">Standard (21 days)</label>
+                    <input
+                      type="radio"
+                      name="delivery-prem"
+                      id="exp-prem"
+                      value="express"
+                    />
+                    <label for="exp-prem">Express (14 days +$500)</label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="pricing-cta">
+                <a href="#contact" class="btn btn-primary">Get Started →</a>
+              </div>
+            </div>
+          </div>
+
+          <!--  Pricing note -->
+          <p class="pricing-note">
+            ✦ Pricing may vary depending on project scope. Contact Emy for a
+            custom quote.
+          </p>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     TESTIMONIALS SECTION
+=========================================== -->
+      <section
+        id="testimonials"
+        class="section-pad"
+        aria-label="Client testimonials"
+      >
+        <div class="container z1">
+          <div class="section-header anim-hidden">
+            <div class="label-tag">Testimonials</div>
+            <h2>Words From <em class="serif-italic">Happy Clients</em></h2>
+            <p>
+              The most rewarding part of my work is seeing the real difference
+              it makes for the people I work with.
+            </p>
+          </div>
+
+          <div class="testimonials-grid">
+            <!-- client testimonials -->
+            <blockquote class="testimonial-card anim-hidden stagger-1">
+              <span class="quote-mark" aria-hidden="true">"</span>
+              <p class="testimonial-text">
+                Emy did an outstanding job creating nursing note cards that are
+                both visually appealing and well-organized. The quality of her
+                work exceeded my expectations — the designs are clean,
+                professional, and perfect for study materials. I'm looking
+                forward to continuing to work with her on future projects.
+                Highly recommended!
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">P</div>
+                <div>
+                  <div class="author-name">Phainistonny</div>
+                  <div class="author-role">United States</div>
+                </div>
+              </div>
+            </blockquote>
+
+            <blockquote class="testimonial-card anim-hidden stagger-2">
+              <span class="quote-mark" aria-hidden="true">"</span>
+              <p class="testimonial-text">
+                This is my second order with Emy and let me say… she is
+                phenomenal. I didn’t know what exactly I wanted and once again,
+                she exuded professionalism, and confidence, and was able to help
+                me create my workbook with ease. She even created my YT and Etsy
+                account. She is definitely worth the money!
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">K</div>
+                <div>
+                  <div class="author-name">kkhirynp</div>
+                  <div class="author-role">United States.</div>
+                </div>
+              </div>
+            </blockquote>
+
+            <blockquote class="testimonial-card anim-hidden stagger-3">
+              <span class="quote-mark" aria-hidden="true">"</span>
+              <p class="testimonial-text">
+                Emy once again aced this project This is the 4th project I've
+                had help with and am extremely satisfied. She did a good job and
+                the result is really pleasing to me. I highly recommend Emy. No
+                doubt I'll be back for more of her beautiful work
+                <br /><br /><br />
+              </p>
+              <div class="testimonial-author">
+                <div class="author-avatar" aria-hidden="true">N</div>
+                <div>
+                  <div class="author-name">natashawilso555</div>
+                  <div class="author-role">United Kingdom</div>
+                </div>
+              </div>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+     CONTACT SECTION
+=========================================== -->
+      <section id="contact" class="section-pad" aria-label="Contact Emy">
+        <div class="container z1">
+          <div class="section-header anim-hidden">
+            <div class="label-tag" style="color: rgba(212, 175, 114, 0.7)">
+              Get In Touch
+            </div>
+            <h2>
+              Let's Build Something <em class="serif-italic">Beautiful</em>
+            </h2>
+            <p style="color: rgba(232, 239, 245, 0.65)">
+              Have a project in mind? I'd love to hear about it. Reach out and
+              let's bring your vision to life.
+            </p>
+          </div>
+
+          <div class="contact-layout">
+            <div class="contact-info anim-hidden">
+              <h3>Let's connect</h3>
+              <p>
+                Whether you're ready to start a project or just exploring, I'm
+                here and happy to chat. Every great resource starts with a
+                conversation.
+              </p>
+
+              <!--  Contact details -->
+              <div class="contact-detail">
+                <span class="contact-detail-icon" aria-hidden="true">✉️</span>
+                <a
+                  href="mailto:emysharon158@gmail.com"
+                  class="contact-email-link"
+                  >emysharon158@gmail.com</a
+                >
+              </div>
+              <div class="contact-detail">
+                <span class="contact-detail-icon" aria-hidden="true">🌍</span>
+                <span>Available worldwide — fully remote</span>
+              </div>
+              <div class="contact-detail">
+                <span class="contact-detail-icon" aria-hidden="true">⏱️</span>
+                <span>Response within 24–48 hours</span>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <form
+              action="https://formspree.io/f/mqeyljrj"
+              method="post"
+              class="contact-form anim-hidden stagger-2"
+              id="contactForm"
+              aria-label="Contact form"
+              novalidate
+            >
+              <div class="form-group">
+                <label class="form-label" for="name">Full Name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Your full name"
+                  required
+                  minlength="2"
+                  aria-required="true"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="email">Email Address</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="you@example.com"
+                  required
+                  aria-required="true"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="service">Service Interest</label>
+                <select
+                  class="form-input"
+                  id="service"
+                  name="service"
+                  aria-label="Select a service"
+                >
+                  <option value="" disabled selected>Select a service…</option>
+                  <option>Study Guides &amp; Workbooks</option>
+                  <option>Ebooks &amp; Digital Resources</option>
+                  <option>Branding &amp; Identity Design</option>
+                  <option>Children's Books &amp; Devotional Guides</option>
+                  <option>Planners &amp; Packaging Design</option>
+                  <option>Nursing &amp; Educational Study Materials</option>
+                  <option>Custom / Other</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="message">Message</label>
+                <textarea
+                  class="form-input"
+                  id="message"
+                  name="message"
+                  placeholder="Tell me about your project, goals, or any questions you have…"
+                  required
+                  minlength="10"
+                  rows="5"
+                  aria-required="true"
+                ></textarea>
+              </div>
+
+              <div
+                class="form-status"
+                id="formStatus"
+                role="alert"
+                aria-live="polite"
+              ></div>
+
+              <button
+                type="submit"
+                class="btn btn-gold"
+                style="align-self: flex-start"
+                aria-label="Send message"
+              >
+                Send Message ✦
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ==========================================
+     FOOTER
+=========================================== -->
+    <footer id="footer" aria-label="Site footer">
+      <div class="container">
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <!--  Footer brand name & tagline -->
+            <h2>Idara's E-Business Hub</h2>
+            <p class="footer-tagline">Where ideas become radiant resources</p>
+            <p class="footer-copy">
+              © <span id="footerYear"></span> DaraM Enterprises. All Rights
+              Reserved.
+            </p>
+          </div>
+
+          <!--  Social media links -->
+          <div class="footer-social" aria-label="Social media links">
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Follow on Instagram"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Follow on Facebook"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Connect on LinkedIn"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
+            <a
+              href="#"
+              class="social-link"
+              aria-label="Follow on Twitter/X"
+              rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.upwork.com/freelancers/~015492231dda2f09ab?companyReference=1525120345064595457&mp_source=share"
+              target="_blank"
+              class="social-link"
+              aria-label="View Upwork profile"
+              rel="noopener noreferrer"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                <!--!Font Awesome Free v7.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2026 Fonticons, Inc.-->
+                <path
+                  d="M493.9 359.6C443.6 359.6 410.4 320.7 401.1 305.7C413 210.4 447.9 180.3 493.9 180.3C539.4 180.3 574.8 216.7 574.8 270C574.8 323.3 539.4 359.7 493.9 359.7L493.9 359.6zM493.9 121.8C412 121.8 366.1 175.2 352.9 230.2C338 202.2 327 164.7 318.4 129.9L205.2 129.9L205.2 270.9C205.2 322 181.9 359.9 136.4 359.9C90.9 359.9 64.8 322.1 64.8 270.9L65.3 129.9L0 129.9L0 270.9C0 312 13.3 349.3 37.6 376C62.6 403.5 96.8 417.8 136.4 417.8C215.2 417.8 270.2 357.4 270.2 270.9L270.2 176.1C278.4 207.3 298 267.2 335.5 319.7L300.5 519.1L366.9 519.1L390 377.8C397.6 384.1 405.7 389.8 414.2 394.8C436.4 408.8 461.9 416.7 488.1 417.6C488.1 417.6 492.1 417.8 494.2 417.8C575.4 417.8 640.1 354.9 640.1 270C640.1 185.1 575.3 121.9 494.1 121.9L493.9 121.8z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.fiverr.com/s/AyaBY6q?utm_source=CopyLink_Mobile"
+              target="_blank"
+              class="social-link"
+              aria-label="View Fiverr profile"
+              rel="noopener noreferrer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                width="24"
+                height="24"
+                color="currentColor"
+                fill="none"
+              >
+                <defs />
+                <path
+                  fill="currentColor"
+                  d="M15,1.275 C15.22,1.304 15.5,1.38 15.736,1.616 C15.971,1.852 16.047,2.132 16.077,2.351 C16.102,2.539 16.102,2.76 16.102,2.966 L16.102,4.534 C16.102,4.74 16.102,4.961 16.077,5.149 C16.047,5.368 15.971,5.648 15.736,5.884 C15.5,6.12 15.22,6.196 15,6.225 C14.813,6.25 14.591,6.25 14.386,6.25 L14.386,6.25 L14.352,6.25 L12.797,6.25 C12.364,6.25 12.127,6.407 11.986,6.574 C11.826,6.764 11.75,7.019 11.75,7.229 L11.75,7.75 L18.045,7.75 C18.478,7.75 18.874,7.75 19.197,7.793 C19.553,7.841 19.928,7.954 20.237,8.263 C20.546,8.572 20.659,8.947 20.707,9.303 C20.75,9.626 20.75,10.023 20.75,10.455 L20.75,21.035 C20.75,21.24 20.75,21.461 20.725,21.649 C20.695,21.868 20.62,22.148 20.384,22.384 C20.148,22.62 19.868,22.695 19.649,22.725 C19.461,22.75 19.24,22.75 19.035,22.75 L16.496,22.75 C16.291,22.75 16.069,22.75 15.882,22.725 C15.663,22.695 15.382,22.62 15.147,22.384 C14.911,22.148 14.835,21.868 14.806,21.649 C14.78,21.461 14.781,21.24 14.781,21.035 L14.781,12.75 L11.75,12.75 L11.75,21.035 C11.75,21.24 11.75,21.461 11.725,21.649 C11.696,21.868 11.62,22.148 11.384,22.384 C11.148,22.62 10.868,22.695 10.649,22.725 C10.461,22.75 10.24,22.75 10.035,22.75 L7.966,22.75 C7.76,22.75 7.539,22.75 7.351,22.725 C7.132,22.695 6.852,22.62 6.616,22.384 C6.38,22.148 6.305,21.868 6.275,21.649 C6.25,21.461 6.25,21.24 6.25,21.035 L6.25,21.035 L6.25,21 L6.25,12.75 L4.966,12.75 C4.76,12.75 4.539,12.75 4.351,12.725 C4.132,12.696 3.852,12.62 3.616,12.384 C3.38,12.148 3.305,11.868 3.275,11.649 C3.25,11.461 3.25,11.24 3.25,11.035 L3.25,11.035 L3.25,11 L3.25,9.5 L3.25,9.466 L3.25,9.465 C3.25,9.26 3.25,9.039 3.275,8.851 C3.305,8.632 3.38,8.352 3.616,8.116 C3.852,7.88 4.132,7.805 4.351,7.775 C4.539,7.75 4.76,7.75 4.965,7.75 L4.966,7.75 L5,7.75 L5.931,7.75 C6.083,3.881 8.555,1.25 11.617,1.25 L14.352,1.25 L14.386,1.25 L14.386,1.25 C14.591,1.25 14.813,1.25 15,1.275 Z M14.601,2.751 C14.531,2.75 14.451,2.75 14.352,2.75 L11.617,2.75 C9.438,2.75 7.283,4.779 7.43,8.47 C7.438,8.674 7.363,8.873 7.221,9.02 C7.08,9.167 6.885,9.25 6.681,9.25 L5,9.25 C4.901,9.25 4.821,9.25 4.751,9.251 C4.75,9.321 4.75,9.401 4.75,9.5 L4.75,11 C4.75,11.099 4.75,11.179 4.751,11.249 C4.821,11.25 4.901,11.25 5,11.25 L7,11.25 C7.414,11.25 7.75,11.586 7.75,12 L7.75,21 C7.75,21.099 7.75,21.179 7.751,21.249 C7.821,21.25 7.901,21.25 8,21.25 L10,21.25 C10.099,21.25 10.179,21.25 10.249,21.249 C10.25,21.179 10.25,21.099 10.25,21 L10.25,12 C10.25,11.586 10.586,11.25 11,11.25 L15.531,11.25 C15.945,11.25 16.281,11.586 16.281,12 L16.281,21 C16.281,21.099 16.281,21.179 16.282,21.249 C16.351,21.25 16.431,21.25 16.531,21.25 L19,21.25 C19.099,21.25 19.179,21.25 19.249,21.249 C19.25,21.179 19.25,21.099 19.25,21 L19.25,10.5 C19.25,10.007 19.248,9.713 19.22,9.503 C19.207,9.406 19.192,9.358 19.183,9.336 C19.182,9.334 19.181,9.332 19.18,9.33 C19.179,9.328 19.179,9.327 19.178,9.326 L19.177,9.323 L19.177,9.323 L19.174,9.322 C19.172,9.321 19.169,9.319 19.164,9.317 C19.142,9.308 19.094,9.293 18.997,9.28 C18.787,9.252 18.493,9.25 18,9.25 L11,9.25 C10.586,9.25 10.25,8.914 10.25,8.5 L10.25,7.229 C10.25,6.71 10.424,6.101 10.838,5.608 C11.272,5.093 11.933,4.75 12.797,4.75 L14.352,4.75 C14.451,4.75 14.531,4.75 14.601,4.749 C14.602,4.679 14.602,4.599 14.602,4.5 L14.602,3 C14.602,2.901 14.602,2.821 14.601,2.751 Z"
+                />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =============================================
+     JAVASCRIPT
+============================================= -->
+    <script
+      data-cfasync="false"
+      src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"
+    ></script>
+    <script>
+      "use strict";
+
+      /* ---- Scroll progress bar ---- */
+      const progressBar = document.getElementById("progress-bar");
+      function updateProgress() {
+        const scrolled = window.scrollY;
+        const total =
+          document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.transform = `scaleX(${scrolled / total})`;
+      }
+      window.addEventListener("scroll", updateProgress, { passive: true });
+
+      /* ---- Navbar scroll state ---- */
+      const navbar = document.getElementById("navbar");
+      function updateNav() {
+        navbar.classList.toggle("scrolled", window.scrollY > 40);
+      }
+      window.addEventListener("scroll", updateNav, { passive: true });
+      updateNav();
+
+      /* ---- Mobile nav toggle ---- */
+      const navToggle = document.getElementById("navToggle");
+      const navMobile = document.getElementById("navMobile");
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = navMobile.classList.toggle("open");
+        navToggle.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+
+      // Close on link click
+      navMobile.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMobile.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
+
+      // Close on outside click
+      document.addEventListener("click", (e) => {
+        if (!navbar.contains(e.target) && !navMobile.contains(e.target)) {
+          navMobile.classList.remove("open");
+          navToggle.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        }
+      });
+
+      /* ---- Intersection Observer — scroll animations ---- */
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("anim-visible");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -60px 0px" },
+      );
+
+      document.querySelectorAll(".anim-hidden").forEach((el) => io.observe(el));
+
+      /* ---- Contact form — Formspree submission ---- */
+
+      const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqeyljrj";
+
+      const form = document.getElementById("contactForm");
+      const formStatus = document.getElementById("formStatus");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Client-side validation via Constraint Validation API
+        if (!form.checkValidity()) {
+          form.reportValidity();
+          return;
+        }
+
+        const btn = form.querySelector('button[type="submit"]');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = "Sending… ✦";
+        btn.disabled = true;
+        formStatus.className = "form-status";
+
+        try {
+          const res = await fetch(FORMSPREE_ENDPOINT, {
+            method: "POST",
+            headers: { Accept: "application/json" },
+            body: new FormData(form),
+          });
+
+          const data = await res.json();
+
+          if (res.ok) {
+            // Success — Formspree accepted the submission
+            formStatus.className = "form-status success";
+            formStatus.textContent =
+              "✦ Thank you! Your message has been sent. Emy will be in touch within 24–48 hours.";
+            form.reset();
+          } else {
+            // Formspree returned an error (e.g. validation, quota exceeded)
+            const msg =
+              data?.errors?.map((err) => err.message).join(", ") ||
+              "Submission failed.";
+            throw new Error(msg);
+          }
+        } catch (err) {
+          formStatus.className = "form-status error";
+          formStatus.textContent = `✦ Something went wrong: ${err.message}. Please email Emy directly.`;
+        } finally {
+          btn.innerHTML = originalHTML;
+          btn.disabled = false;
+          // Auto-hide the status message after 10 seconds
+          setTimeout(() => {
+            formStatus.className = "form-status";
+          }, 10000);
+        }
+      });
+
+      /* ---- Footer year ---- */
+      document.getElementById("footerYear").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
